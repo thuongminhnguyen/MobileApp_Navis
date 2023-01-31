@@ -4,16 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TestLoginAPI.GetATMTechByUser">
+    tools:context=".API_GetAllAtmTechnicianByUser.GetATMTechByUserActivity">
 
     <Button
         android:id="@+id/btn_getATM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="88dp"
-        android:text="getATM"
+        android:text="GetAllAtmTechnicianByUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.534"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_GetAllDevice"
+        android:layout_width="266dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="32dp"
+        android:text="GetAllDevice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_getATM" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.mbbapp.TestLoginAPI;
+package com.example.mbbapp.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,15 +8,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mbbapp.Model.ATMTechByUserModel;
 import com.example.mbbapp.R;
 
 import java.util.List;
 
 public class GetATMAdapter extends RecyclerView.Adapter<GetATMAdapter.GetATMViewHolder> {
 
-    private final List<ATMTechByUser> mListATMTech;
+    private final List<ATMTechByUserModel> mListATMTech;
 
-    public GetATMAdapter(List<ATMTechByUser> mListATMTech) {
+    public GetATMAdapter(List<ATMTechByUserModel> mListATMTech) {
         this.mListATMTech = mListATMTech;
     }
 
@@ -30,7 +31,7 @@ public class GetATMAdapter extends RecyclerView.Adapter<GetATMAdapter.GetATMView
 
     @Override
     public void onBindViewHolder(@NonNull GetATMViewHolder holder, int position) {
-        ATMTechByUser atmTechByUser = mListATMTech.get(position);
+        ATMTechByUserModel atmTechByUser = mListATMTech.get(position);
         if(atmTechByUser == null){
             return;
         }

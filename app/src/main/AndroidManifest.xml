@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,14 +16,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".TestLoginAPI.GetATMTechByUser"
+            android:name=".API_GetAllDevice.GetDeviceActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".TestLoginAPI.TestLogin"
+            android:name=".API_GetAllAtmTechnicianByUser.GetATMTechByUserActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".API_Login.LoginActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
@@ -37,7 +43,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TestLoginAPI.GetActivity"
+            android:name=".GetActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"

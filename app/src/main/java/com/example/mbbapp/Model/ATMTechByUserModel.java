@@ -1,8 +1,6 @@
-package com.example.mbbapp.TestLoginAPI;
+package com.example.mbbapp.Model;
 
-import androidx.recyclerview.widget.RecyclerView;
-
-public class ATMTechByUser {
+public class ATMTechByUserModel {
     private String id;
     private String avatar;
     private String employeeCode;
@@ -17,9 +15,9 @@ public class ATMTechByUser {
     private String cardNumber;
 
 
-    public ATMTechByUser(String id, String avatar, String employeeCode, String name,
-                         String sexStr, String phone, String email, String status, String unitId,
-                         String unitName, String rfidId, String cardNumber) {
+    public ATMTechByUserModel(String id, String avatar, String employeeCode, String name,
+                              String sexStr, String phone, String email, String status, String unitId,
+                              String unitName, String rfidId, String cardNumber) {
         this.id = id;
         this.avatar = avatar;
         this.employeeCode = employeeCode;

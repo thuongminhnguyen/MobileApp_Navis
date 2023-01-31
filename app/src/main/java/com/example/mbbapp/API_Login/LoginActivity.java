@@ -1,4 +1,4 @@
-package com.example.mbbapp.TestLoginAPI;
+package com.example.mbbapp.API_Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mbbapp.GetActivity;
+import com.example.mbbapp.Model.AccessTokenModel;
+import com.example.mbbapp.Model.LoginModel;
 import com.example.mbbapp.R;
 
 import retrofit2.Call;
@@ -18,7 +21,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class TestLogin extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     public static String token;
 
@@ -43,23 +46,23 @@ public class TestLogin extends AppCompatActivity {
                 LoginModel loginModel = new LoginModel();
                 loginModel.setUsername(userName.getText().toString());
                 loginModel.setPassword(passWord.getText().toString());
-                Call<AccessToken> call = accessTokenClient.Login(loginModel);
-                call.enqueue(new Callback<AccessToken>() {
+                Call<AccessTokenModel> call = accessTokenClient.Login(loginModel);
+                call.enqueue(new Callback<AccessTokenModel>() {
                     @Override
-                    public void onResponse(Call<AccessToken> call, Response<AccessToken> response) {
+                    public void onResponse(Call<AccessTokenModel> call, Response<AccessTokenModel> response) {
                         if(response.isSuccessful()){
-                            Toast.makeText(TestLogin.this, "Login is success", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Login is success", Toast.LENGTH_SHORT).show();
                             token = "x-access-token=" + response.body().getData().getAccessToken();
-                            startActivity(new Intent(TestLogin.this, GetActivity.class));
+                            startActivity(new Intent(LoginActivity.this, GetActivity.class));
                         }else {
-                            Toast.makeText(TestLogin.this, "Login is not correct", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Login is not correct", Toast.LENGTH_SHORT).show();
 
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<AccessToken> call, Throwable t) {
-                        Toast.makeText(TestLogin.this, "Error", Toast.LENGTH_SHORT).show();
+                    public void onFailure(Call<AccessTokenModel> call, Throwable t) {
+                        Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

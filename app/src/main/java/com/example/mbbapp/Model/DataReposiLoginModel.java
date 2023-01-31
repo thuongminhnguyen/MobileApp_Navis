@@ -1,10 +1,10 @@
-package com.example.mbbapp.TestLoginAPI;
+package com.example.mbbapp.Model;
 
-public class Data {
+public class DataReposiLoginModel {
     private String accessToken;
     private String scope;
 
-    public Data(String accessToken, String scope) {
+    public DataReposiLoginModel(String accessToken, String scope) {
         this.accessToken = accessToken;
         this.scope = scope;
     }

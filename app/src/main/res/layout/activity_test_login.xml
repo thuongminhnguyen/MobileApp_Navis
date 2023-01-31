@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TestLoginAPI.TestLogin">
+    tools:context=".API_Login.LoginActivity">
 
     <EditText
         android:id="@+id/edt_user"
@@ -19,30 +19,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edt_pass"
-        android:layout_width="284dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="80dp"
-        android:ems="10"
-        android:hint="Enter the pass"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_user" />
-
     <Button
         android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
         android:text="Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_pass"
-        app:layout_constraintVertical_bias="0.059" />
+        app:layout_constraintVertical_bias="0.231" />
+
+    <EditText
+        android:id="@+id/edt_pass"
+        android:layout_width="271dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="64dp"
+        android:ems="10"
+        android:hint="Enter your Password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_user" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
