@@ -1,7 +1,5 @@
 package com.example.mbbapp.API_GetAllAtmTechnicianByUser;
 
-import com.example.mbbapp.Model.ATMTechByUserModel;
-
 import java.util.List;
 
 import retrofit2.Call;

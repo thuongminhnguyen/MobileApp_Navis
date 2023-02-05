@@ -1,6 +1,4 @@
-package com.example.mbbapp.Model;
-
-import com.example.mbbapp.Model.DataReposiLoginModel;
+package com.example.mbbapp.API_Login;
 
 public class AccessTokenModel {
     private int statusCode;

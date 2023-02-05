@@ -27,4 +27,14 @@
         app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_getATM" />
+
+    <Button
+        android:id="@+id/get_uer_unit_test"
+        android:layout_width="270dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="52dp"
+        android:text="GETUSERUNIT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_GetAllDevice" />
 </androidx.constraintlayout.widget.ConstraintLayout>

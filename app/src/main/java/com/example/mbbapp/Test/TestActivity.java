@@ -1,0 +1,108 @@
+package com.example.mbbapp.Test;
+
+import static com.example.mbbapp.R.layout.item_unit_name;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+import com.example.mbbapp.API_Login.LoginActivity;
+import com.example.mbbapp.R;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonIOException;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.nio.channels.ScatteringByteChannel;
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
+
+public class TestActivity extends AppCompatActivity {
+
+    private Spinner spinner;
+    private ArrayList<String> getUnitNameName = new ArrayList<String>();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_get_user_unit2);
+
+        spinner = findViewById(R.id.spinner);
+        getUnitName();
+
+    }
+
+    private void getUnitName() {
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(API_Interface.BASE_URL).addConverterFactory(ScalarsConverterFactory.create()).build();
+        API_Interface api_interface = retrofit.create(API_Interface.class);
+
+        Call<String> call = api_interface.getUnitName(LoginActivity.token);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if(response.isSuccessful()){
+                    if(response.body() != null){
+                        try {
+                            String getResponse = response.body().toString();
+                            List<Model> getUnitNameData = new ArrayList<Model>();
+                            JSONArray jsonArray = new JSONArray(getResponse);
+                            getUnitNameData.add(new Model());
+                            for (int i = 0; i <jsonArray.length(); i++){
+                                Model model = new Model();
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                model.setUnitName(jsonObject.getString("unitName"));
+                                getUnitNameData.add(model);
+                            }
+
+
+                                for (int i = 0; i < getUnitNameData.size(); i++) {
+                                    Model model = getUnitNameData.get(i);
+                                    if (model.getUnitName() != null) {
+                                        getUnitNameName.add(model.getUnitName().toString());
+                                    }
+                                }
+
+
+                            ArrayAdapter<String> spinUnitNameAdapter = new ArrayAdapter<String>( TestActivity.this, android.R.layout.simple_spinner_item, getUnitNameName );
+
+                            spinUnitNameAdapter.setDropDownViewResource(R.layout.dropdown_item);
+                           spinner.setAdapter(spinUnitNameAdapter);
+                           spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                               @Override
+                               public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                               }
+
+                               @Override
+                               public void onNothingSelected(AdapterView<?> parent) {
+
+                               }
+                           });
+
+                        }
+                        catch (JsonIOException | JSONException exception){
+                            exception.printStackTrace();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
+    }
+}

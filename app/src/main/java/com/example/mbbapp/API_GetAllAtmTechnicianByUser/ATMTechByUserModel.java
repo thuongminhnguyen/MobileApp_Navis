@@ -1,4 +1,4 @@
-package com.example.mbbapp.Model;
+package com.example.mbbapp.API_GetAllAtmTechnicianByUser;
 
 public class ATMTechByUserModel {
     private String id;

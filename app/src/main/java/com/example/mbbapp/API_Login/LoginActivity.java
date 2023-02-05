@@ -9,10 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.mbbapp.GetActivity;
-import com.example.mbbapp.Model.AccessTokenModel;
-import com.example.mbbapp.Model.LoginModel;
 import com.example.mbbapp.R;
 
 import retrofit2.Call;

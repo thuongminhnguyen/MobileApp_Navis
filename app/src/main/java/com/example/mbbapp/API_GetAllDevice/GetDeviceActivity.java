@@ -10,8 +10,6 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.mbbapp.API_Login.LoginActivity;
-import com.example.mbbapp.Adapter.GetAllDeviceAdapter;
-import com.example.mbbapp.Model.GetAlllDeviceModel;
 import com.example.mbbapp.R;
 
 import java.util.ArrayList;

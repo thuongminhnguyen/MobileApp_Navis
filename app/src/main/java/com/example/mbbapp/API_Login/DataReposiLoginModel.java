@@ -1,4 +1,4 @@
-package com.example.mbbapp.Model;
+package com.example.mbbapp.API_Login;
 
 public class DataReposiLoginModel {
     private String accessToken;

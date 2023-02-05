@@ -1,4 +1,4 @@
-package com.example.mbbapp.Model;
+package com.example.mbbapp.API_Login;
 
 public class LoginModel {
     private String username;

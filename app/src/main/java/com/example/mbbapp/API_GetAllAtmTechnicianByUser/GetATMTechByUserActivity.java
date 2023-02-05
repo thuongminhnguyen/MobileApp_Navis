@@ -9,8 +9,6 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.mbbapp.Adapter.GetATMAdapter;
-import com.example.mbbapp.Model.ATMTechByUserModel;
 import com.example.mbbapp.R;
 import com.example.mbbapp.API_Login.LoginActivity;
 

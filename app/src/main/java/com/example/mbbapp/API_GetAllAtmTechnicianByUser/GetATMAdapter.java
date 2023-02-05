@@ -1,4 +1,4 @@
-package com.example.mbbapp.Adapter;
+package com.example.mbbapp.API_GetAllAtmTechnicianByUser;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mbbapp.Model.ATMTechByUserModel;
 import com.example.mbbapp.R;
 
 import java.util.List;
