@@ -13,10 +13,13 @@ import com.example.mbbapp.API_GetAllDevice.GetDeviceActivity;
 
 import com.example.mbbapp.Test.TestActivity;
 
+import java.util.Date;
+
 public class GetActivity extends AppCompatActivity {
     private Button buttonGetATM;
     private Button buttonGetAllDevice;
     private Button buttongetUserUnit;
+
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,8 @@ public class GetActivity extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 

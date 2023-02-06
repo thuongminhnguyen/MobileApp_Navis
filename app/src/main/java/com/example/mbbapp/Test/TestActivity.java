@@ -1,26 +1,31 @@
 package com.example.mbbapp.Test;
 
-import static com.example.mbbapp.R.layout.item_unit_name;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.example.mbbapp.API_GetAllDevice.GetDeviceActivity;
 import com.example.mbbapp.API_Login.LoginActivity;
 import com.example.mbbapp.R;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonIOException;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.nio.channels.ScatteringByteChannel;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -32,16 +37,76 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class TestActivity extends AppCompatActivity {
 
     private Spinner spinner;
-    private ArrayList<String> getUnitNameName = new ArrayList<String>();
+    private EditText edtDateStart;
+    private EditText edtDateFinish;
+    private RecyclerView recyclerView;
 
+    private  String startDate, finishDate;
+    private  int unitID;
+    private ArrayList<String> getUnitNameName = new ArrayList<String>();
+    private List<GetListScheduleByUnitModel> resultsData = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_user_unit2);
 
         spinner = findViewById(R.id.spinner);
-        getUnitName();
+        edtDateStart = findViewById(R.id.edtDateStart);
+        edtDateFinish = findViewById(R.id.edtDateFinish);
+        recyclerView = findViewById(R.id.rcv_schedule);
 
+//        getUnitName();
+//        edtDateStart.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int check = 1;
+//                showDate(check);
+//                startDate = edtDateStart.getText().toString();
+//            }
+//
+//
+//        });
+//
+//        edtDateFinish.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int check = 2;
+//                showDate(check);
+//                finishDate = edtDateFinish.getText().toString();
+//            }
+//        });
+
+       displaySchedule();
+
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        ScheduleAdapter scheduleAdapter = new ScheduleAdapter(getApplicationContext(), resultsData);
+        recyclerView.setAdapter(scheduleAdapter);
+        displaySchedule();
+
+    }
+
+    private void showDate(int check) {
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DATE);
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(year,month,dayOfMonth);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                if(check == 1){
+                    edtDateStart.setText(simpleDateFormat.format(calendar.getTime()));
+                }
+                if(check == 2){
+                    edtDateFinish.setText(simpleDateFormat.format(calendar.getTime()));
+                }
+
+            }
+        }, year, month, day);
+        datePickerDialog.show();
     }
 
     private void getUnitName() {
@@ -82,7 +147,7 @@ public class TestActivity extends AppCompatActivity {
                            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                @Override
                                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                                    unitID = getUnitNameData.get(position).getUnitId();
                                }
 
                                @Override
@@ -101,8 +166,77 @@ public class TestActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-
+                Toast.makeText(TestActivity.this, "Failure UnitName", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void displaySchedule(){
+        getUnitName();
+        edtDateStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int check = 1;
+                showDate(check);
+                startDate = edtDateStart.getText().toString();
+            }
+
+
+        });
+
+        edtDateFinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int check = 2;
+                showDate(check);
+                finishDate = edtDateFinish.getText().toString();
+            }
+        });
+
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(API_Interface.BASE_URL).addConverterFactory(ScalarsConverterFactory.create()).build();
+        API_Interface api_interface = retrofit.create(API_Interface.class);
+
+        Call<String> call = api_interface.getSchedule(LoginActivity.token, startDate, finishDate, unitID);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if(response.isSuccessful()){
+                    if(response.body() != null){
+                        String getResponse = response.body().toString();
+                        List<GetListScheduleByUnitModel> getScheduleData = new ArrayList<>();
+                        try {
+                            JSONArray jsonArray = new JSONArray(getResponse);
+                            getScheduleData.add(new GetListScheduleByUnitModel());
+                            for (int i = 0; i < jsonArray.length(); i++){
+                                GetListScheduleByUnitModel getListScheduleByUnitModel = new GetListScheduleByUnitModel();
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                                getListScheduleByUnitModel.setScheduleName(jsonObject.getString("scheduleName"));
+                                getListScheduleByUnitModel.setUnitName(jsonObject.getString("unitName"));
+                                getListScheduleByUnitModel.setCarPlateNumber(jsonObject.getString("carPlateNumber"));
+                                getListScheduleByUnitModel.setSecurityName(jsonObject.getString("securityName"));
+                                getListScheduleByUnitModel.setDriverName(jsonObject.getString("driverName"));
+                                getListScheduleByUnitModel.setOwnerName(jsonObject.getString("ownerName"));
+                                getListScheduleByUnitModel.setEscortName(jsonObject.getString("escortName"));
+                                getScheduleData.add(getListScheduleByUnitModel);
+                            }
+
+
+                            resultsData.addAll(getScheduleData);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(TestActivity.this, "Failure", Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 }

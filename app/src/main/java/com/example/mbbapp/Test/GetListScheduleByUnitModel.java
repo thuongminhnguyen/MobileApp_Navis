@@ -1,4 +1,4 @@
-package com.example.mbbapp.API_GetListScheduleByUnit;
+package com.example.mbbapp.Test;
 
 public class GetListScheduleByUnitModel {
     private int id;
@@ -26,6 +26,19 @@ public class GetListScheduleByUnitModel {
     private String startTime;
     private String endTime;
     private String runningDate;
+
+    public GetListScheduleByUnitModel() {
+    }
+
+    public GetListScheduleByUnitModel(String scheduleName, String unitName, String carPlateNumber, String securityName, String driverName, String ownerName, String escortName) {
+        this.scheduleName = scheduleName;
+        this.unitName = unitName;
+        this.carPlateNumber = carPlateNumber;
+        this.securityName = securityName;
+        this.driverName = driverName;
+        this.ownerName = ownerName;
+        this.escortName = escortName;
+    }
 
     public GetListScheduleByUnitModel(int id, int sampleId, String sampleCode, String scheduleName, String lstPoint, String lstTimeLabel, int sampleType, int unitId, String unitName, int carId, String carPlateNumber, String securityName, int driverId, String driverName, int ownerId, String ownerName, int escortId, String escortName, int atmTechnicanId, String ktvAtmName, String unlimitedTime, String assignedDate, String startTime, String endTime, String runningDate) {
         this.id = id;

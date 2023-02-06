@@ -3,6 +3,7 @@ package com.example.mbbapp.Test;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Query;
 
 public interface API_Interface {
 
@@ -10,4 +11,10 @@ public interface API_Interface {
 
     @GET("/UserUnit/GetUserUnit")
     Call<String> getUnitName(@Header("Cookie")  String authToken);
+
+    @GET("/Schedule/GetListScheduleByUnit")
+    Call<String> getSchedule(@Header("Cookie")  String authToken,
+                                                 @Query("fromDate") String fromDate,
+                                                 @Query("toDate") String toDate,
+                                                 @Query("unitId") int unitId);
 }

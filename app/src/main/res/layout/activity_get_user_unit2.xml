@@ -6,11 +6,153 @@
     android:layout_height="match_parent"
     tools:context=".GetUserUnit.GetUserUnitActivityTest2">
 
-    <Spinner android:id="@+id/spinner"
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="152dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:text="Ngày kết thúc"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="207dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.921"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="100dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="28dp"
+        android:gravity="center"
+        android:text="Đơn vị"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintHorizontal_bias="0.37"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="152dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Ngày bắt đầu"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <EditText
+        android:id="@+id/edtDateStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Chọn ngày bắt đầu"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <EditText
+        android:id="@+id/edtDateFinish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Chọn ngày kết thúc"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/edtDateStart" />
+
+    <TableLayout
+        android:layout_width="406dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="232dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:stretchColumns="1,2,3,4,5,6,7">
+
+        <TableRow>
+            <TextView
+                android:text="scheduleName"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:gravity="center"
+                android:layout_column= "1"/>
+            <TextView
+                android:text="unitName"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:gravity="center"
+                android:layout_column= "2"/>
+            <TextView
+                android:text="carPlateNumber"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:gravity="center"
+                android:layout_column= "3"/>
+            <TextView
+                android:text="securityName"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:gravity="center"
+                android:layout_column= "4"/>
+            <TextView
+                android:text="driverName"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:gravity="center"
+                android:layout_column= "5"/>
+            <TextView
+                android:text="ownerName"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:gravity="center"
+                android:layout_column= "6"/>
+            <TextView
+                android:text="escortName"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:gravity="center"
+                android:layout_column= "7"/>
+
+
+        </TableRow>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_schedule"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="10dp"/>
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+
+    </TableLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
