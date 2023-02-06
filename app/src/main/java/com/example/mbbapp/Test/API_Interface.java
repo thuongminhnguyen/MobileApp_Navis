@@ -12,6 +12,7 @@ public interface API_Interface {
     @GET("/UserUnit/GetUserUnit")
     Call<String> getUnitName(@Header("Cookie")  String authToken);
 
+    //http://203.171.20.94:8903/Schedule/GetListScheduleByUnit?fromDate=2023-02-03&toDate=2023-02-03&unitId=33
     @GET("/Schedule/GetListScheduleByUnit")
     Call<String> getSchedule(@Header("Cookie")  String authToken,
                                                  @Query("fromDate") String fromDate,

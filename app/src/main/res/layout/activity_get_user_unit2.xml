@@ -32,12 +32,12 @@
         android:id="@+id/textView4"
         android:layout_width="100dp"
         android:layout_height="58dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="44dp"
         android:gravity="center"
         android:text="Đơn vị"
         android:textSize="20dp"
         app:layout_constraintEnd_toStartOf="@+id/spinner"
-        app:layout_constraintHorizontal_bias="0.37"
+        app:layout_constraintHorizontal_bias="0.764"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -153,6 +153,16 @@
 
 
     </TableLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

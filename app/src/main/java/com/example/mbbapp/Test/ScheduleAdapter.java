@@ -72,9 +72,6 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
             ownerName = itemView.findViewById(R.id.ownerName);
             escortName = itemView.findViewById(R.id.escortName);
 
-
-
-
         }
     }
 }

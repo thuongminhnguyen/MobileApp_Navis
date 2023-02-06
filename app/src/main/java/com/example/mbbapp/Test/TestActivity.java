@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -18,6 +19,7 @@ import com.example.mbbapp.API_GetAllDevice.GetDeviceActivity;
 import com.example.mbbapp.API_Login.LoginActivity;
 import com.example.mbbapp.R;
 import com.google.gson.JsonIOException;
+import com.google.gson.JsonParser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,11 +42,12 @@ public class TestActivity extends AppCompatActivity {
     private EditText edtDateStart;
     private EditText edtDateFinish;
     private RecyclerView recyclerView;
+    private Button button;
 
     private  String startDate, finishDate;
     private  int unitID;
     private ArrayList<String> getUnitNameName = new ArrayList<String>();
-    private List<GetListScheduleByUnitModel> resultsData = new ArrayList<>();
+    private ArrayList<GetListScheduleByUnitModel> resultsData = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,36 +57,42 @@ public class TestActivity extends AppCompatActivity {
         edtDateStart = findViewById(R.id.edtDateStart);
         edtDateFinish = findViewById(R.id.edtDateFinish);
         recyclerView = findViewById(R.id.rcv_schedule);
+        button = findViewById(R.id.button);
 
-//        getUnitName();
-//        edtDateStart.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int check = 1;
-//                showDate(check);
-//                startDate = edtDateStart.getText().toString();
-//            }
-//
-//
-//        });
-//
-//        edtDateFinish.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int check = 2;
-//                showDate(check);
-//                finishDate = edtDateFinish.getText().toString();
-//            }
-//        });
+        getUnitName();
+        edtDateStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int check = 1;
+                showDate(check);
+                startDate = edtDateStart.getText().toString();
+            }
 
-       displaySchedule();
+
+        });
+
+        edtDateFinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int check = 2;
+                showDate(check);
+                finishDate = edtDateFinish.getText().toString();
+            }
+        });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displaySchedule();
+            }
+        });
 
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         ScheduleAdapter scheduleAdapter = new ScheduleAdapter(getApplicationContext(), resultsData);
         recyclerView.setAdapter(scheduleAdapter);
-        displaySchedule();
+//        displaySchedule();
 
     }
 
@@ -172,26 +181,7 @@ public class TestActivity extends AppCompatActivity {
     }
 
     private void displaySchedule(){
-        getUnitName();
-        edtDateStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int check = 1;
-                showDate(check);
-                startDate = edtDateStart.getText().toString();
-            }
 
-
-        });
-
-        edtDateFinish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int check = 2;
-                showDate(check);
-                finishDate = edtDateFinish.getText().toString();
-            }
-        });
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl(API_Interface.BASE_URL).addConverterFactory(ScalarsConverterFactory.create()).build();
         API_Interface api_interface = retrofit.create(API_Interface.class);
@@ -203,33 +193,39 @@ public class TestActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     if(response.body() != null){
                         String getResponse = response.body().toString();
-                        List<GetListScheduleByUnitModel> getScheduleData = new ArrayList<>();
-                        try {
-                            JSONArray jsonArray = new JSONArray(getResponse);
-                            getScheduleData.add(new GetListScheduleByUnitModel());
-                            for (int i = 0; i < jsonArray.length(); i++){
-                                GetListScheduleByUnitModel getListScheduleByUnitModel = new GetListScheduleByUnitModel();
-                                JSONObject jsonObject = jsonArray.getJSONObject(i);
-
-                                getListScheduleByUnitModel.setScheduleName(jsonObject.getString("scheduleName"));
-                                getListScheduleByUnitModel.setUnitName(jsonObject.getString("unitName"));
-                                getListScheduleByUnitModel.setCarPlateNumber(jsonObject.getString("carPlateNumber"));
-                                getListScheduleByUnitModel.setSecurityName(jsonObject.getString("securityName"));
-                                getListScheduleByUnitModel.setDriverName(jsonObject.getString("driverName"));
-                                getListScheduleByUnitModel.setOwnerName(jsonObject.getString("ownerName"));
-                                getListScheduleByUnitModel.setEscortName(jsonObject.getString("escortName"));
-                                getScheduleData.add(getListScheduleByUnitModel);
+                        if(getResponse != null) {
+                            if (getResponse != "Empty") {
+                                List<GetListScheduleByUnitModel> getScheduleData = new ArrayList<>();
+                                try {
+                                    JSONArray jsonArray = new JSONArray(getResponse);
+                                    getScheduleData.add(new GetListScheduleByUnitModel());
+                                    for (int i = 0; i < jsonArray.length(); i++) {
+                                        GetListScheduleByUnitModel getListScheduleByUnitModel = new GetListScheduleByUnitModel();
+                                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                        getListScheduleByUnitModel.setScheduleName(jsonObject.getString("scheduleName"));
+                                        getListScheduleByUnitModel.setUnitName(jsonObject.getString("unitName"));
+                                        getListScheduleByUnitModel.setCarPlateNumber(jsonObject.getString("carPlateNumber"));
+                                        getListScheduleByUnitModel.setSecurityName(jsonObject.getString("securityName"));
+                                        getListScheduleByUnitModel.setDriverName(jsonObject.getString("driverName"));
+                                        getListScheduleByUnitModel.setOwnerName(jsonObject.getString("ownerName"));
+                                        getListScheduleByUnitModel.setEscortName(jsonObject.getString("escortName"));
+                                        getScheduleData.add(getListScheduleByUnitModel);
+                                    }
+                                    resultsData.addAll(getScheduleData);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
                             }
-
-
-                            resultsData.addAll(getScheduleData);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
 
                     }
                 }
+//                recyclerView.setHasFixedSize(true);
+//                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+//                recyclerView.setLayoutManager(linearLayoutManager);
+//                ScheduleAdapter scheduleAdapter = new ScheduleAdapter(getApplicationContext(), resultsData);
+//                recyclerView.setAdapter(scheduleAdapter);
+
             }
 
             @Override
