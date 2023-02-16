@@ -1,12 +1,9 @@
 package com.example.mbbapp.Test;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,22 +14,18 @@ import java.util.List;
 
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
 
-    Context context;
-    List<GetListScheduleByUnitModel> getListScheduleByUnitModelList;
 
-    public ScheduleAdapter(Context context) {
-        this.context = context;
-    }
+    private final List<GetListScheduleByUnitModel> getListScheduleByUnitModelList;
 
-    public ScheduleAdapter(Context context, List<GetListScheduleByUnitModel> getListScheduleByUnitModelList) {
-        this.context = context;
+    public ScheduleAdapter(List<GetListScheduleByUnitModel> getListScheduleByUnitModelList) {
         this.getListScheduleByUnitModelList = getListScheduleByUnitModelList;
     }
+
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_layout_schedule,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout_schedule,parent,false);
 
         return new ViewHolder(view);
     }
@@ -58,8 +51,8 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
         return getListScheduleByUnitModelList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView scheduleName,unitName,carPlateNumber
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView scheduleName,unitName,carPlateNumber
                 ,securityName,driverName,ownerName,escortName;
         public ViewHolder(@NonNull View itemView) {
 

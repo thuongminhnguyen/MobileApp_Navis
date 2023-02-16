@@ -1,11 +1,13 @@
 package com.example.mbbapp.Test;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,11 +17,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.mbbapp.API_GetAllDevice.GetDeviceActivity;
 import com.example.mbbapp.API_Login.LoginActivity;
 import com.example.mbbapp.R;
 import com.google.gson.JsonIOException;
-import com.google.gson.JsonParser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +34,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class TestActivity extends AppCompatActivity {
@@ -43,11 +44,13 @@ public class TestActivity extends AppCompatActivity {
     private EditText edtDateFinish;
     private RecyclerView recyclerView;
     private Button button;
+    private List<GetListScheduleByUnitModel> listScheduleByUnitModelList;
 
     private  String startDate, finishDate;
     private  int unitID;
     private ArrayList<String> getUnitNameName = new ArrayList<String>();
     private ArrayList<GetListScheduleByUnitModel> resultsData = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +61,11 @@ public class TestActivity extends AppCompatActivity {
         edtDateFinish = findViewById(R.id.edtDateFinish);
         recyclerView = findViewById(R.id.rcv_schedule);
         button = findViewById(R.id.button);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        listScheduleByUnitModelList = new ArrayList<>();
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(itemDecoration);
 
         getUnitName();
         edtDateStart.setOnClickListener(new View.OnClickListener() {
@@ -65,18 +73,13 @@ public class TestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int check = 1;
                 showDate(check);
-                startDate = edtDateStart.getText().toString();
             }
-
-
         });
-
         edtDateFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int check = 2;
                 showDate(check);
-                finishDate = edtDateFinish.getText().toString();
             }
         });
 
@@ -87,13 +90,9 @@ public class TestActivity extends AppCompatActivity {
             }
         });
 
-        recyclerView.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        ScheduleAdapter scheduleAdapter = new ScheduleAdapter(getApplicationContext(), resultsData);
-        recyclerView.setAdapter(scheduleAdapter);
-//        displaySchedule();
+    }
 
+    private void callAPIGetSchedule() {
     }
 
     private void showDate(int check) {
@@ -108,9 +107,11 @@ public class TestActivity extends AppCompatActivity {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 if(check == 1){
                     edtDateStart.setText(simpleDateFormat.format(calendar.getTime()));
+                    startDate = edtDateStart.getText().toString();
                 }
                 if(check == 2){
                     edtDateFinish.setText(simpleDateFormat.format(calendar.getTime()));
+                    finishDate = edtDateFinish.getText().toString();
                 }
 
             }
@@ -132,22 +133,20 @@ public class TestActivity extends AppCompatActivity {
                             String getResponse = response.body().toString();
                             List<Model> getUnitNameData = new ArrayList<Model>();
                             JSONArray jsonArray = new JSONArray(getResponse);
-                            getUnitNameData.add(new Model());
                             for (int i = 0; i <jsonArray.length(); i++){
                                 Model model = new Model();
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                model.setUnitName(jsonObject.getString("unitName"));
+                                model.setId(jsonObject.getInt("id"));
+                                model.setName(jsonObject.getString("name"));
                                 getUnitNameData.add(model);
                             }
 
-
                                 for (int i = 0; i < getUnitNameData.size(); i++) {
                                     Model model = getUnitNameData.get(i);
-                                    if (model.getUnitName() != null) {
-                                        getUnitNameName.add(model.getUnitName().toString());
+                                    if (model.getName() != null) {
+                                        getUnitNameName.add(model.getName().toString());
                                     }
                                 }
-
 
                             ArrayAdapter<String> spinUnitNameAdapter = new ArrayAdapter<String>( TestActivity.this, android.R.layout.simple_spinner_item, getUnitNameName );
 
@@ -156,7 +155,8 @@ public class TestActivity extends AppCompatActivity {
                            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                @Override
                                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                    unitID = getUnitNameData.get(position).getUnitId();
+                                    unitID = getUnitNameData.get(position).getId();
+                                    Log.d("GetRespone", String.valueOf(unitID));
                                }
 
                                @Override
@@ -179,60 +179,21 @@ public class TestActivity extends AppCompatActivity {
             }
         });
     }
-
     private void displaySchedule(){
 
-
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(API_Interface.BASE_URL).addConverterFactory(ScalarsConverterFactory.create()).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(API_Interface.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         API_Interface api_interface = retrofit.create(API_Interface.class);
-
-        Call<String> call = api_interface.getSchedule(LoginActivity.token, startDate, finishDate, unitID);
-        call.enqueue(new Callback<String>() {
+        api_interface.getSchedule(LoginActivity.token, startDate, finishDate, unitID).enqueue(new Callback<List<GetListScheduleByUnitModel>>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if(response.isSuccessful()){
-                    if(response.body() != null){
-                        String getResponse = response.body().toString();
-                        if(getResponse != null) {
-                            if (getResponse != "Empty") {
-                                List<GetListScheduleByUnitModel> getScheduleData = new ArrayList<>();
-                                try {
-                                    JSONArray jsonArray = new JSONArray(getResponse);
-                                    getScheduleData.add(new GetListScheduleByUnitModel());
-                                    for (int i = 0; i < jsonArray.length(); i++) {
-                                        GetListScheduleByUnitModel getListScheduleByUnitModel = new GetListScheduleByUnitModel();
-                                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                        getListScheduleByUnitModel.setScheduleName(jsonObject.getString("scheduleName"));
-                                        getListScheduleByUnitModel.setUnitName(jsonObject.getString("unitName"));
-                                        getListScheduleByUnitModel.setCarPlateNumber(jsonObject.getString("carPlateNumber"));
-                                        getListScheduleByUnitModel.setSecurityName(jsonObject.getString("securityName"));
-                                        getListScheduleByUnitModel.setDriverName(jsonObject.getString("driverName"));
-                                        getListScheduleByUnitModel.setOwnerName(jsonObject.getString("ownerName"));
-                                        getListScheduleByUnitModel.setEscortName(jsonObject.getString("escortName"));
-                                        getScheduleData.add(getListScheduleByUnitModel);
-                                    }
-                                    resultsData.addAll(getScheduleData);
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        }
-
-                    }
-                }
-//                recyclerView.setHasFixedSize(true);
-//                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-//                recyclerView.setLayoutManager(linearLayoutManager);
-//                ScheduleAdapter scheduleAdapter = new ScheduleAdapter(getApplicationContext(), resultsData);
-//                recyclerView.setAdapter(scheduleAdapter);
-
+            public void onResponse(Call<List<GetListScheduleByUnitModel>> call, Response<List<GetListScheduleByUnitModel>> response) {
+                listScheduleByUnitModelList = response.body();
+                ScheduleAdapter scheduleAdapter = new ScheduleAdapter(listScheduleByUnitModelList);
+                recyclerView.setAdapter(scheduleAdapter);
             }
-
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<List<GetListScheduleByUnitModel>> call, Throwable t) {
                 Toast.makeText(TestActivity.this, "Failure", Toast.LENGTH_LONG).show();
             }
         });
-
     }
 }
