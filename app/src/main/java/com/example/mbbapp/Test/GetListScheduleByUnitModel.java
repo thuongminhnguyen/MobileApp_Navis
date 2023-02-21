@@ -27,6 +27,16 @@ public class GetListScheduleByUnitModel {
     private String endTime;
     private String runningDate;
 
+    private boolean expandble;
+
+    public boolean isExpandble() {
+        return expandble;
+    }
+
+    public void setExpandble(boolean expandble) {
+        this.expandble = expandble;
+    }
+
     public GetListScheduleByUnitModel() {
     }
 
@@ -40,7 +50,7 @@ public class GetListScheduleByUnitModel {
         this.escortName = escortName;
     }
 
-    public GetListScheduleByUnitModel(int id, int sampleId, String sampleCode, String scheduleName, String lstPoint, String lstTimeLabel, int sampleType, int unitId, String unitName, int carId, String carPlateNumber, String securityName, int driverId, String driverName, int ownerId, String ownerName, int escortId, String escortName, int atmTechnicanId, String ktvAtmName, String unlimitedTime, String assignedDate, String startTime, String endTime, String runningDate) {
+    public GetListScheduleByUnitModel(int id, int sampleId, String sampleCode, String scheduleName, String lstPoint, String lstTimeLabel, int sampleType, int unitId, String unitName, int carId, String carPlateNumber, String securityName, int driverId, String driverName, int ownerId, String ownerName, int escortId, String escortName, int atmTechnicanId, String ktvAtmName, String unlimitedTime, String assignedDate, String startTime, String endTime, String runningDate,boolean expandble) {
         this.id = id;
         this.sampleId = sampleId;
         this.sampleCode = sampleCode;
@@ -66,6 +76,7 @@ public class GetListScheduleByUnitModel {
         this.startTime = startTime;
         this.endTime = endTime;
         this.runningDate = runningDate;
+        this.expandble = false;
     }
 
     public int getId() {
