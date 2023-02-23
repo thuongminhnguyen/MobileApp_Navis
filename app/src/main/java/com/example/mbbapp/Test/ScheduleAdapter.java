@@ -50,6 +50,10 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
             holder.driverName.setText(getListScheduleByUnitModel.getDriverName());
             holder.ownerName.setText(getListScheduleByUnitModel.getOwnerName());
             holder.escortName.setText(getListScheduleByUnitModel.getEscortName());
+            holder.ownerPhone.setText(getListScheduleByUnitModel.getOwnerPhone());
+            holder.drivePhone.setText(getListScheduleByUnitModel.getDriverPhone());
+            holder.ktvPhone.setText(getListScheduleByUnitModel.getKtvPhone());
+            holder.escortPhone.setText(getListScheduleByUnitModel.getEscortPhone());
             holder.timeDate.setText(convertTime(getListScheduleByUnitModel.getRunningDate(),2));
             holder.startTime.setText(convertTime(getListScheduleByUnitModel.getStartTime(),1));
             holder.finishTime.setText(convertTime(getListScheduleByUnitModel.getEndTime(),1));
@@ -68,11 +72,12 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView scheduleName,carPlateNumber
-                ,securityName,driverName,ownerName,escortName,startTime, finishTime;
+                ,securityName,driverName,ownerName,escortName,startTime, finishTime, drivePhone, ownerPhone, escortPhone,ktvPhone;
         private final EditText timeDate;
         private final TableLayout tableLayout;
         private final LinearLayoutCompat itemLinearLayout;
         private final ImageView click_Visible;
+        private final LinearLayoutCompat linearLayoutCompat;
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
@@ -88,6 +93,11 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
             tableLayout = itemView.findViewById(R.id.item_detailShecduler);
             itemLinearLayout= itemView.findViewById(R.id.item_layout);
             click_Visible = itemView.findViewById(R.id.click_visible);
+            linearLayoutCompat = itemView.findViewById(R.id.item_dateInforSchedule);
+            escortPhone = itemView.findViewById(R.id.id_phoneEscort);
+            ownerPhone = itemView.findViewById(R.id.id_phoneOwner);
+            drivePhone = itemView.findViewById(R.id.id_phoneDrive);
+            ktvPhone = itemView.findViewById(R.id.id_phoneSercur);
 
             click_Visible.setOnClickListener(new View.OnClickListener() {
                 @Override

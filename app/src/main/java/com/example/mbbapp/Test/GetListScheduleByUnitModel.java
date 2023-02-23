@@ -26,6 +26,42 @@ public class GetListScheduleByUnitModel {
     private String startTime;
     private String endTime;
     private String runningDate;
+    private String driverPhone;
+    private String ownerPhone;
+    private String ktvPhone;
+    private String escortPhone;
+
+    public String getDriverPhone() {
+        return driverPhone;
+    }
+
+    public void setDriverPhone(String driverPhone) {
+        this.driverPhone = driverPhone;
+    }
+
+    public String getOwnerPhone() {
+        return ownerPhone;
+    }
+
+    public void setOwnerPhone(String ownerPhone) {
+        this.ownerPhone = ownerPhone;
+    }
+
+    public String getKtvPhone() {
+        return ktvPhone;
+    }
+
+    public void setKtvPhone(String ktvPhone) {
+        this.ktvPhone = ktvPhone;
+    }
+
+    public String getEscortPhone() {
+        return escortPhone;
+    }
+
+    public void setEscortPhone(String escortPhone) {
+        this.escortPhone = escortPhone;
+    }
 
     private boolean expandble;
 
@@ -40,7 +76,7 @@ public class GetListScheduleByUnitModel {
     public GetListScheduleByUnitModel() {
     }
 
-    public GetListScheduleByUnitModel(String scheduleName, String unitName, String carPlateNumber, String securityName, String driverName, String ownerName, String escortName) {
+    public GetListScheduleByUnitModel( String escortPhone,String ktvPhone,String ownerPhone,String driverPhone,String scheduleName, String unitName, String carPlateNumber, String securityName, String driverName, String ownerName, String escortName) {
         this.scheduleName = scheduleName;
         this.unitName = unitName;
         this.carPlateNumber = carPlateNumber;
@@ -48,6 +84,10 @@ public class GetListScheduleByUnitModel {
         this.driverName = driverName;
         this.ownerName = ownerName;
         this.escortName = escortName;
+        this.driverPhone = driverPhone;
+        this.escortPhone = escortPhone;
+        this.ktvPhone = ktvPhone;
+        this.ownerPhone = ownerPhone;
     }
 
     public GetListScheduleByUnitModel(int id, int sampleId, String sampleCode, String scheduleName, String lstPoint, String lstTimeLabel, int sampleType, int unitId, String unitName, int carId, String carPlateNumber, String securityName, int driverId, String driverName, int ownerId, String ownerName, int escortId, String escortName, int atmTechnicanId, String ktvAtmName, String unlimitedTime, String assignedDate, String startTime, String endTime, String runningDate,boolean expandble) {

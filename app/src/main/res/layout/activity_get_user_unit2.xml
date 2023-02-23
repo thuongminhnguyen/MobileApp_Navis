@@ -4,66 +4,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginRight="6dp"
     tools:context=".GetUserUnit.GetUserUnitActivityTest2">
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="152dp"
-        android:layout_height="40dp"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:gravity="center"
+        android:layout_marginTop="12dp"
+        android:gravity="center|left"
         android:text="Ngày kết thúc"
-        android:textSize="20dp"
+        android:textSize="14dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Spinner
-        android:text="Chọn địa điểm"
         android:id="@+id/spinner"
         android:layout_width="207dp"
         android:layout_height="58dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center|left"
+        android:scrollbarSize="14dp"
+        android:text="Chọn địa điểm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="152dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="92dp"
-        android:gravity="center"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center|left"
         android:text="Ngày bắt đầu"
-        android:textSize="20dp"
+        android:textSize="14dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <EditText
         android:id="@+id/edtDateStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="18dp"
         android:ems="10"
+        android:gravity="center|left"
         android:hint="Chọn ngày bắt đầu"
         android:inputType="textPersonName"
+        android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintHorizontal_bias="0.811"
         app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edtDateFinish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="18dp"
         android:ems="10"
+        android:gravity="center|left"
         android:hint="Chọn ngày kết thúc"
         android:inputType="textPersonName"
+        android:textSize="14dp"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="0.816"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/edtDateStart" />
 
@@ -71,19 +82,24 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="276dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="18dp"
         android:text="Lọc"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spinner"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_schedule"
         android:layout_width="381dp"
         android:layout_height="469dp"
+        android:layout_marginLeft="12dp"
         android:layout_marginTop="224dp"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/item_layout_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,13 +107,13 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="20dp"
         android:text="Danh sách phân công"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.187"
+        app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
