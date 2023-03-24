@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <item
+            android:id="@+id/menuProfile"
+            android:icon="@drawable/ic_baseline_account_circle_24"
+            android:title="Your Name"/>
+
+        <item
+            android:id="@+id/menuHome"
+            android:icon="@drawable/ic_baseline_home"
+            android:title="Trang chủ"/>
+        <item
+            android:id="@+id/menuNotification"
+            android:icon="@drawable/ic_baseline_add_alert_24"
+            android:title="Thông báo"/>
+        <item
+            android:id="@+id/menuHistory"
+            android:icon="@drawable/ic_baseline_history_24"
+            android:title="Lịch sử"/>
+        <item
+            android:id="@+id/menuAssignmentList"
+            android:icon="@drawable/ic_baseline_groups_2_24"
+            android:title="Danh sách phân công"/>
+        <item
+            android:id="@+id/menuDriverList"
+            android:icon="@drawable/ic_baseline_directions_car_filled_24"
+            android:title="Danh sách xe"/>
+        <item
+            android:id="@+id/menuDriver"
+            android:icon="@drawable/ic_baseline_directions_car_filled_24"
+            android:title="Lái xe"/>
+        <item
+            android:id="@+id/menuOwner"
+            android:icon="@drawable/ic_baseline_account_circle_24"
+            android:title="Chủ hàng/Thủ quỹ ATM"/>
+        <item
+            android:id="@+id/menuStatisti"
+            android:icon="@drawable/ic_baseline_account_circle_24"
+            android:title="Thống kê"/>
+        <item
+            android:id="@+id/menuReport"
+            android:icon="@drawable/ic_baseline_account_circle_24"
+            android:title="Báo cáo"/>
+
+        <item
+            android:id="@+id/menuAccount"
+            android:icon="@drawable/ic_baseline_account_circle_24"
+            android:title="Tài khoản"/>
+
+        <item
+            android:id="@+id/menuLogout"
+            android:icon="@drawable/ic_baseline_account_circle_24"
+            android:title="Đăng xuất"/>
+
+
+</menu>

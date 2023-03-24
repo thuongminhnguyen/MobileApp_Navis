@@ -10,7 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.example.mbbapp.GetActivity;
+import com.example.mbbapp.NavigationActivity;
 import com.example.mbbapp.R;
+import com.example.mbbapp.Test.TestActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                         if(response.isSuccessful()){
                             Toast.makeText(LoginActivity.this, "Login is success", Toast.LENGTH_SHORT).show();
                             token = "x-access-token=" + response.body().getData().getAccessToken();
-                            startActivity(new Intent(LoginActivity.this, GetActivity.class));
+                            startActivity(new Intent(LoginActivity.this, NavigationActivity.class));
                         }else {
                             Toast.makeText(LoginActivity.this, "Login is not correct", Toast.LENGTH_SHORT).show();
 
