@@ -18,13 +18,18 @@ import android.widget.GridView;
 import com.example.mbbapp.Test.Model_mainScreen;
 import com.example.mbbapp.Test.TestActivity;
 import com.example.mbbapp.Test.main_Screen_Adapter;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-public class NavigationActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
+public class NavigationActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener
+                                                        , BottomNavigationView.OnNavigationItemSelectedListener {
 
     GridView gridView;
+    BottomNavigationView bottomNavigationView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,10 +45,6 @@ public class NavigationActivity extends AppCompatActivity  implements Navigation
         });
 
 
-//        NavController navController = Navigation.findNavController(this, R.id.idGridMainScreen);
-//        NavigationUI.setupWithNavController(navigationView,navController);
-
-
         gridView = findViewById(R.id.idGridMainScreen);
         ArrayList<Model_mainScreen> model_mainScreenArrayList = new ArrayList<Model_mainScreen>();
         model_mainScreenArrayList.add(new Model_mainScreen("Trực tuyến", R.drawable.truc_tuyen));
@@ -54,13 +55,19 @@ public class NavigationActivity extends AppCompatActivity  implements Navigation
         model_mainScreenArrayList.add(new Model_mainScreen("Chủ hàng", R.drawable.chu_hang));
         model_mainScreenArrayList.add(new Model_mainScreen("Thống kê", R.drawable.thong_ke));
         model_mainScreenArrayList.add(new Model_mainScreen("Báo cáo", R.drawable.bao_cao));
-        model_mainScreenArrayList.add(new Model_mainScreen("Tài khoản", R.drawable.tai_khoan));
+       // model_mainScreenArrayList.add(new Model_mainScreen("Tài khoản", R.drawable.tai_khoan));
 
         main_Screen_Adapter adapter = new main_Screen_Adapter(this, model_mainScreenArrayList);
         gridView.setAdapter(adapter);
 
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setSelectedItemId(R.id.TrangChu);
+
+
 
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
