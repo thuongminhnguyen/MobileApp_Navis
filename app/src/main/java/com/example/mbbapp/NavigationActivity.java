@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.GridLayout;
 import android.widget.GridView;
 
+import com.example.mbbapp.Test.Fragment_Notification;
 import com.example.mbbapp.Test.Model_mainScreen;
 import com.example.mbbapp.Test.TestActivity;
 import com.example.mbbapp.Test.main_Screen_Adapter;
@@ -28,6 +29,8 @@ public class NavigationActivity extends AppCompatActivity  implements Navigation
 
     GridView gridView;
     BottomNavigationView bottomNavigationView;
+
+    Fragment_Notification fragmentNotification = new Fragment_Notification();
 
 
     @Override

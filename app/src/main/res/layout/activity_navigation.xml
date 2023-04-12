@@ -16,7 +16,7 @@
             android:id="@+id/layoutToolBar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="#4da6ff"
+            android:background="@color/lavender"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingStart="15dp"
@@ -105,7 +105,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 app:menu="@menu/bottom_nav_menu"
-                android:background="@drawable/background_bottom_nav"
+                android:background="@color/lavender"
+
                 android:layout_alignParentBottom= "true"
                 />
 
@@ -118,6 +119,7 @@
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView"
         android:layout_width="wrap_content"
+
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/layout_nevigation_menu_header"

@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText userName;
     EditText passWord;
     Button button_Login;
+    boolean passwordVisible;
     Retrofit.Builder builder = new Retrofit.Builder().baseUrl("http://203.171.20.94:8903")
             .addConverterFactory(GsonConverterFactory.create());
     Retrofit retrofit = builder.build();
@@ -35,10 +39,10 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_login);
-        passWord = (EditText) findViewById(R.id.edt_pass);
-        userName = (EditText) findViewById(R.id.edt_user);
-        button_Login = (Button) findViewById(R.id.btn_login);
+        setContentView(R.layout.login_layout);
+        passWord = (EditText) findViewById(R.id.login_password);
+        userName = (EditText) findViewById(R.id.login_username);
+        button_Login = (Button) findViewById(R.id.login_button);
         button_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +68,33 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
                     }
                 });
+            }
+        });
+
+
+        passWord.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int Right = 2;
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    if(event.getRawX()>= passWord.getRight() - passWord.getCompoundDrawables()[Right].getBounds().width()){
+                        int selection = passWord.getSelectionEnd();
+                        if(passwordVisible){
+                            passWord.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_off_24,0);
+
+                            passWord.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisible= false;
+                        }else{
+                            passWord.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_off_24,0);
+
+                            passWord.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisible= true;
+                        }
+                        passWord.setSelection(selection);
+                        return true;
+                    }
+                }
+                return false;
             }
         });
     }
