@@ -3,19 +3,19 @@
 
     <item
         android:id="@+id/TrangChu"
+        android:icon="@drawable/ic_baseline_home"
         android:title="Trang Chủ"
-        android:icon="@drawable/ic_baseline_home"/>
-    <item
-        android:id="@+id/TrucTuyen"
-        android:title="Trực Tuyến"
-        android:icon="@drawable/truc_tuyen"/>
+        />
+
     <item
         android:id="@+id/thongBao"
+        android:icon="@drawable/ic_baseline_notifications_24"
         android:title="Thông Báo"
-        android:icon="@drawable/ic_baseline_notifications_24"/>
+        />
 
     <item
         android:id="@+id/taikhoan"
+        android:icon="@drawable/tai_khoan"
         android:title="Tài khoản"
-        android:icon="@drawable/tai_khoan"/>
+        />
 </menu>
