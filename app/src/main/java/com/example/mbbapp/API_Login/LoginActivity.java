@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.mbbapp.GetActivity;
 import com.example.mbbapp.NavigationActivity;
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText userName;
     EditText passWord;
     Button button_Login;
+    TextView sign_up;
     boolean passwordVisible;
     Retrofit.Builder builder = new Retrofit.Builder().baseUrl("http://203.171.20.94:8903")
             .addConverterFactory(GsonConverterFactory.create());
@@ -43,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         passWord = (EditText) findViewById(R.id.login_password);
         userName = (EditText) findViewById(R.id.login_username);
         button_Login = (Button) findViewById(R.id.login_button);
+        sign_up = findViewById(R.id.signupRedirectText);
         button_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +74,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        sign_up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, Sign_up_activity.class));
+            }
+        });
 
         passWord.setOnTouchListener(new View.OnTouchListener() {
             @Override
