@@ -33,7 +33,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_test,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_unit_schedule,parent,false);
 
         return new ViewHolder(view);
     }
@@ -73,7 +73,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView scheduleName,carPlateNumber
                 ,securityName,driverName,ownerName,escortName,startTime, finishTime, drivePhone, ownerPhone, escortPhone,ktvPhone;
-        private final EditText timeDate;
+        private final TextView timeDate;
         private final TableLayout tableLayout;
         private final LinearLayoutCompat itemLinearLayout;
         private final ImageView click_Visible;
