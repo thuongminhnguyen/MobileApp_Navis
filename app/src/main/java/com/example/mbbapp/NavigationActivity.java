@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.GridLayout;
 import android.widget.GridView;
 
+import com.example.mbbapp.Test.Fragment_Driver;
 import com.example.mbbapp.Test.Fragment_Main;
 import com.example.mbbapp.Test.Fragment_Notification;
 import com.example.mbbapp.Test.Model_mainScreen;
@@ -34,6 +35,7 @@ public class NavigationActivity extends AppCompatActivity  implements Navigation
 
     Fragment_Notification fragmentNotification = new Fragment_Notification();
     Fragment_Main fragmentMain = new Fragment_Main();
+    Fragment_Driver fragment_driver = new Fragment_Driver();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,9 +69,9 @@ public class NavigationActivity extends AppCompatActivity  implements Navigation
                     case R.id.thongBao:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentNotification).commit();
                         return true;
-//                    case R.id.settings:
-//                        getSupportFragmentManager().beginTransaction().replace(R.id.container,settingsFragment).commit();
-//                        return true;
+                  case R.id.taikhoan:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment_driver).commit();
+                        return true;
                 }
 
                 return false;

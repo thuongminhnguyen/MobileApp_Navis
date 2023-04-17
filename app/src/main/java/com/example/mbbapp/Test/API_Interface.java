@@ -19,4 +19,8 @@ public interface API_Interface {
                                                @Query("fromDate") String fromDate,
                                                @Query("toDate") String toDate,
                                                @Query("unitId") int unitId);
+
+    //http://203.171.20.94:8903/Driver/GetAllDriverByUser
+    @GET("/Driver/GetAllDriverByUser")
+    Call<List<DriverModel>> getAllDriver(@Header("Cookie")  String authToken);
 }
