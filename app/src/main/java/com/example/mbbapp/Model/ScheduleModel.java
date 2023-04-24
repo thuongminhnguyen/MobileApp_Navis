@@ -1,6 +1,6 @@
-package com.example.mbbapp.Test;
+package com.example.mbbapp.Model;
 
-public class GetListScheduleByUnitModel {
+public class ScheduleModel {
     private int id;
     private int sampleId;
     private String sampleCode;
@@ -73,10 +73,10 @@ public class GetListScheduleByUnitModel {
         this.expandble = expandble;
     }
 
-    public GetListScheduleByUnitModel() {
+    public ScheduleModel() {
     }
 
-    public GetListScheduleByUnitModel( String escortPhone,String ktvPhone,String ownerPhone,String driverPhone,String scheduleName, String unitName, String carPlateNumber, String securityName, String driverName, String ownerName, String escortName) {
+    public ScheduleModel(String escortPhone, String ktvPhone, String ownerPhone, String driverPhone, String scheduleName, String unitName, String carPlateNumber, String securityName, String driverName, String ownerName, String escortName) {
         this.scheduleName = scheduleName;
         this.unitName = unitName;
         this.carPlateNumber = carPlateNumber;
@@ -90,7 +90,7 @@ public class GetListScheduleByUnitModel {
         this.ownerPhone = ownerPhone;
     }
 
-    public GetListScheduleByUnitModel(int id, int sampleId, String sampleCode, String scheduleName, String lstPoint, String lstTimeLabel, int sampleType, int unitId, String unitName, int carId, String carPlateNumber, String securityName, int driverId, String driverName, int ownerId, String ownerName, int escortId, String escortName, int atmTechnicanId, String ktvAtmName, String unlimitedTime, String assignedDate, String startTime, String endTime, String runningDate,boolean expandble) {
+    public ScheduleModel(int id, int sampleId, String sampleCode, String scheduleName, String lstPoint, String lstTimeLabel, int sampleType, int unitId, String unitName, int carId, String carPlateNumber, String securityName, int driverId, String driverName, int ownerId, String ownerName, int escortId, String escortName, int atmTechnicanId, String ktvAtmName, String unlimitedTime, String assignedDate, String startTime, String endTime, String runningDate, boolean expandble) {
         this.id = id;
         this.sampleId = sampleId;
         this.sampleCode = sampleCode;

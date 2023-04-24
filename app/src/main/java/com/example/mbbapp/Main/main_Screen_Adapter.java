@@ -1,4 +1,4 @@
-package com.example.mbbapp.Test;
+package com.example.mbbapp.Main;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,7 +14,6 @@ import androidx.annotation.Nullable;
 import com.example.mbbapp.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class main_Screen_Adapter extends ArrayAdapter<Model_mainScreen> {
 

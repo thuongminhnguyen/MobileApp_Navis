@@ -1,9 +1,8 @@
-package com.example.mbbapp.Test;
+package com.example.mbbapp.Main;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -12,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mbbapp.Model.ScheduleModel;
 import com.example.mbbapp.R;
 
 import java.text.ParseException;
@@ -23,9 +23,9 @@ import java.util.List;
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
 
 
-    private static List<GetListScheduleByUnitModel> getListScheduleByUnitModelList;
+    private static List<ScheduleModel> getListScheduleByUnitModelList;
 
-    public ScheduleAdapter(List<GetListScheduleByUnitModel> getListScheduleByUnitModelList) {
+    public ScheduleAdapter(List<ScheduleModel> getListScheduleByUnitModelList) {
         this.getListScheduleByUnitModelList = getListScheduleByUnitModelList;
     }
 
@@ -41,7 +41,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if(getListScheduleByUnitModelList != null && getListScheduleByUnitModelList.size() > 0){
-            GetListScheduleByUnitModel getListScheduleByUnitModel = getListScheduleByUnitModelList.get(position);
+            ScheduleModel getListScheduleByUnitModel = getListScheduleByUnitModelList.get(position);
             holder.tableLayout.setBackgroundResource(R.drawable.item_background);
             holder.itemLinearLayout.setBackgroundResource(R.drawable.item_layout_background);
             holder.scheduleName.setText(getListScheduleByUnitModel.getScheduleName());
@@ -102,7 +102,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
             click_Visible.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    GetListScheduleByUnitModel scheduleAdapter = getListScheduleByUnitModelList.get(getAdapterPosition());
+                    ScheduleModel scheduleAdapter = getListScheduleByUnitModelList.get(getAdapterPosition());
                     scheduleAdapter.setExpandble(!scheduleAdapter.isExpandble());
                     notifyItemChanged(getAdapterPosition());
                 }

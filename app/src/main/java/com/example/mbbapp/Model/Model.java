@@ -1,4 +1,4 @@
-package com.example.mbbapp.Test;
+package com.example.mbbapp.Model;
 
 public class Model {
 

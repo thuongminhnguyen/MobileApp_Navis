@@ -11,7 +11,19 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
+<!--        <LinearLayout-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+<!--            <ImageView-->
+<!--                android:paddingRight="18px"-->
+<!--                app:riv_oval="true"-->
+<!--                android:id="@+id/avatar"-->
+<!--                android:layout_width="130dp"-->
+<!--                android:layout_height="70dp"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:layout_weight="2" />-->
+<!--        </LinearLayout>-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,7 +55,7 @@
                         android:padding="12px"
                         android:drawableLeft="@drawable/ic_baseline_person_24"
                         android:drawableRight="@drawable/baseline_keyboard_arrow_down_24"
-                        android:id="@+id/name_driver"
+                        android:id="@+id/name_ownerATM"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="left"
@@ -51,7 +63,7 @@
 
                     <TextView
                         android:drawableLeft="@drawable/baseline_phone_24"
-                        android:id="@+id/numberPhone_driver"
+                        android:id="@+id/numberPhone_ownerATM"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding = "12px"
@@ -61,7 +73,7 @@
                 <FrameLayout
                     android:background="@drawable/background_item"
 
-                    android:id="@+id/item_infor_driver"
+                    android:id="@+id/item_infor_ownerATM"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -73,6 +85,7 @@
                         <LinearLayout
                             android:background="@drawable/lavender_border"
                             android:layout_margin="6px"
+                            android:layout_marginTop="6px"
                             android:padding="12px"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -82,12 +95,12 @@
                                 android:padding="6px"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Mã nhân viên lái xe:" />
+                                android:text="Mã thủ quỹ cây ATM:" />
 
                             <TextView
                                 android:padding="6px"
                                 android:textColor="@color/black"
-                                android:id="@+id/code_driver"
+                                android:id="@+id/code_ownerATM"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textSize="18sp"
@@ -95,6 +108,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:layout_marginTop="6px"
                             android:background="@drawable/lavender_border"
                             android:layout_margin="6px"
                             android:padding="12px"
@@ -119,6 +133,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:layout_marginTop="6px"
                             android:background="@drawable/lavender_border"
                             android:layout_margin="6px"
                             android:padding="12px"
@@ -137,12 +152,13 @@
                                 android:padding="6px"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
-                                android:id="@+id/email_driver"
+                                android:id="@+id/email_ownerATM"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="TextView" />
                         </LinearLayout>
                         <LinearLayout
+                            android:layout_marginTop="6px"
                             android:background="@drawable/lavender_border"
                             android:layout_margin="6px"
                             android:padding="12px"
@@ -161,7 +177,7 @@
                                 android:padding="6px"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
-                                android:id="@+id/card_number_driver"
+                                android:id="@+id/card_number_ownerATM"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="TextView" />

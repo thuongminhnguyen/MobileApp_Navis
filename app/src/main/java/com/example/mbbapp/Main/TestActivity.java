@@ -1,4 +1,4 @@
-package com.example.mbbapp.Test;
+package com.example.mbbapp.Main;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -15,10 +15,11 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TableLayout;
 import android.widget.Toast;
 
 import com.example.mbbapp.API_Login.LoginActivity;
+import com.example.mbbapp.Model.Model;
+import com.example.mbbapp.Model.ScheduleModel;
 import com.example.mbbapp.R;
 import com.google.gson.JsonIOException;
 
@@ -46,12 +47,12 @@ public class TestActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Button button;
 
-    private List<GetListScheduleByUnitModel> listScheduleByUnitModelList;
+    private List<ScheduleModel> listScheduleByUnitModelList;
 
     private  String startDate, finishDate;
     private  int unitID;
     private ArrayList<String> getUnitNameName = new ArrayList<String>();
-    private ArrayList<GetListScheduleByUnitModel> resultsData = new ArrayList<>();
+    private ArrayList<ScheduleModel> resultsData = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -185,15 +186,15 @@ public class TestActivity extends AppCompatActivity {
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl(API_Interface.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         API_Interface api_interface = retrofit.create(API_Interface.class);
-        api_interface.getSchedule(LoginActivity.token, startDate, finishDate, unitID).enqueue(new Callback<List<GetListScheduleByUnitModel>>() {
+        api_interface.getSchedule(LoginActivity.token, startDate, finishDate, unitID).enqueue(new Callback<List<ScheduleModel>>() {
             @Override
-            public void onResponse(Call<List<GetListScheduleByUnitModel>> call, Response<List<GetListScheduleByUnitModel>> response) {
+            public void onResponse(Call<List<ScheduleModel>> call, Response<List<ScheduleModel>> response) {
                 listScheduleByUnitModelList = response.body();
                 ScheduleAdapter scheduleAdapter = new ScheduleAdapter(listScheduleByUnitModelList);
                 recyclerView.setAdapter(scheduleAdapter);
             }
             @Override
-            public void onFailure(Call<List<GetListScheduleByUnitModel>> call, Throwable t) {
+            public void onFailure(Call<List<ScheduleModel>> call, Throwable t) {
                 Toast.makeText(TestActivity.this, "Failure", Toast.LENGTH_LONG).show();
             }
         });

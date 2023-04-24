@@ -1,4 +1,4 @@
-package com.example.mbbapp.Test;
+package com.example.mbbapp.Main;
 
 public class Model_mainScreen {
     private String item_name

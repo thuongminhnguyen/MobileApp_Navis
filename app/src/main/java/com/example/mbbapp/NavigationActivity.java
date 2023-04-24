@@ -4,36 +4,28 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.GridLayout;
-import android.widget.GridView;
 
-import com.example.mbbapp.Test.Fragment_Driver;
-import com.example.mbbapp.Test.Fragment_Main;
-import com.example.mbbapp.Test.Fragment_Notification;
-import com.example.mbbapp.Test.Model_mainScreen;
-import com.example.mbbapp.Test.TestActivity;
-import com.example.mbbapp.Test.main_Screen_Adapter;
-import com.google.android.material.badge.BadgeDrawable;
+import com.example.mbbapp.Main.Fragment_Driver;
+import com.example.mbbapp.Main.Fragment_Escort;
+import com.example.mbbapp.Main.Fragment_Main;
+import com.example.mbbapp.Main.Fragment_Notification;
+import com.example.mbbapp.Main.Fragment_Owner_ATM;
+import com.example.mbbapp.Main.TestActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.ArrayList;
 
 public class NavigationActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener
                                                         , BottomNavigationView.OnNavigationItemSelectedListener {
 
     BottomNavigationView bottomNavigationView;
-
-    Fragment_Notification fragmentNotification = new Fragment_Notification();
+    Fragment_Escort fragment_escort = new Fragment_Escort();
+    Fragment_Owner_ATM fragment_owner_atm = new Fragment_Owner_ATM();
     Fragment_Main fragmentMain = new Fragment_Main();
     Fragment_Driver fragment_driver = new Fragment_Driver();
 
@@ -67,10 +59,10 @@ public class NavigationActivity extends AppCompatActivity  implements Navigation
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentMain).commit();
                         return true;
                     case R.id.thongBao:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentNotification).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment_owner_atm).commit();
                         return true;
                   case R.id.taikhoan:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment_driver).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment_escort).commit();
                         return true;
                 }
 

@@ -11,9 +11,7 @@ import android.widget.Button;
 import com.example.mbbapp.API_GetAllAtmTechnicianByUser.GetATMTechByUserActivity;
 import com.example.mbbapp.API_GetAllDevice.GetDeviceActivity;
 
-import com.example.mbbapp.Test.TestActivity;
-
-import java.util.Date;
+import com.example.mbbapp.Main.TestActivity;
 
 public class GetActivity extends AppCompatActivity {
     private Button buttonGetATM;

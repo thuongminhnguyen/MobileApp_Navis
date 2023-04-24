@@ -1,4 +1,4 @@
-package com.example.mbbapp.Test;
+package com.example.mbbapp.Model;
 
 public class DriverModel {
     private int id;
@@ -14,6 +14,7 @@ public class DriverModel {
     private String unitName;
     private String avatar;
     private boolean isActive;
+    private boolean expandble;
 
     public DriverModel() {
     }
@@ -142,5 +143,14 @@ public class DriverModel {
 
     public void setActive(boolean active) {
         isActive = active;
+    }
+
+    public boolean isExpandble() {
+        return expandble;
+    }
+    
+
+    public void setExpandble(boolean expandble) {
+        this.expandble = expandble;
     }
 }
