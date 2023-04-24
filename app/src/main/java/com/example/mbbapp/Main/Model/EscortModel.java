@@ -1,4 +1,4 @@
-package com.example.mbbapp.Model;
+package com.example.mbbapp.Main.Model;
 
 public class EscortModel {
     private int id;

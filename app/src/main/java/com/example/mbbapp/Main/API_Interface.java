@@ -1,8 +1,9 @@
 package com.example.mbbapp.Main;
-import com.example.mbbapp.Model.DriverModel;
-import com.example.mbbapp.Model.EscortModel;
-import com.example.mbbapp.Model.OwnerATMModel;
-import com.example.mbbapp.Model.ScheduleModel;
+import com.example.mbbapp.Main.Model.DriverModel;
+import com.example.mbbapp.Main.Model.EscortModel;
+import com.example.mbbapp.Main.Model.OwnerATMModel;
+import com.example.mbbapp.Main.Model.RecipientModel;
+import com.example.mbbapp.Main.Model.ScheduleModel;
 
 import java.util.List;
 
@@ -35,4 +36,7 @@ public interface API_Interface {
 
     @GET("/Escort/GetAllEscortByUser")
     Call<List<EscortModel>> getAllEscort(@Header("Cookie")  String authToken);
+
+    @GET("/Recipient/GetAllRecipientByUser")
+    Call<List<RecipientModel>> getAllRecipient(@Header("Cookie")  String authToken);
 }

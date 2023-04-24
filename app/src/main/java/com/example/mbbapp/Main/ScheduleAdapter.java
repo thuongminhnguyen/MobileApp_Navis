@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mbbapp.Model.ScheduleModel;
+import com.example.mbbapp.Main.Model.ScheduleModel;
 import com.example.mbbapp.R;
 
 import java.text.ParseException;

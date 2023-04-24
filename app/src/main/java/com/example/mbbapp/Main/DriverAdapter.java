@@ -14,7 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mbbapp.Model.DriverModel;
+import com.example.mbbapp.Main.Model.DriverModel;
 import com.example.mbbapp.R;
 
 import java.io.IOException;

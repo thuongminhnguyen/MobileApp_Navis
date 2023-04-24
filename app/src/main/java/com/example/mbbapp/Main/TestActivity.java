@@ -18,8 +18,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.mbbapp.API_Login.LoginActivity;
-import com.example.mbbapp.Model.Model;
-import com.example.mbbapp.Model.ScheduleModel;
+import com.example.mbbapp.Main.Model.Model;
+import com.example.mbbapp.Main.Model.ScheduleModel;
 import com.example.mbbapp.R;
 import com.google.gson.JsonIOException;
 

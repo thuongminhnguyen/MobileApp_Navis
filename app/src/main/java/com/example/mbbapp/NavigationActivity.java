@@ -15,6 +15,7 @@ import com.example.mbbapp.Main.Fragment_Escort;
 import com.example.mbbapp.Main.Fragment_Main;
 import com.example.mbbapp.Main.Fragment_Notification;
 import com.example.mbbapp.Main.Fragment_Owner_ATM;
+import com.example.mbbapp.Main.Fragment_Recipient;
 import com.example.mbbapp.Main.TestActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -28,6 +29,7 @@ public class NavigationActivity extends AppCompatActivity  implements Navigation
     Fragment_Owner_ATM fragment_owner_atm = new Fragment_Owner_ATM();
     Fragment_Main fragmentMain = new Fragment_Main();
     Fragment_Driver fragment_driver = new Fragment_Driver();
+    Fragment_Recipient fragment_recipient = new Fragment_Recipient();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +61,7 @@ public class NavigationActivity extends AppCompatActivity  implements Navigation
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentMain).commit();
                         return true;
                     case R.id.thongBao:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment_owner_atm).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment_recipient).commit();
                         return true;
                   case R.id.taikhoan:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment_escort).commit();

@@ -12,8 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mbbapp.API_Login.LoginActivity;
-import com.example.mbbapp.Model.EscortModel;
-import com.example.mbbapp.Model.OwnerATMModel;
+import com.example.mbbapp.Main.Model.EscortModel;
 import com.example.mbbapp.R;
 
 import java.util.ArrayList;

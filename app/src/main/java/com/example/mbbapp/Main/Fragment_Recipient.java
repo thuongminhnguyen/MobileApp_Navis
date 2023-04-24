@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.mbbapp.API_Login.LoginActivity;
 import com.example.mbbapp.Main.Model.OwnerATMModel;
+import com.example.mbbapp.Main.Model.RecipientModel;
 import com.example.mbbapp.R;
 
 import java.util.ArrayList;
@@ -24,44 +25,44 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Fragment_Owner_ATM extends Fragment {
+public class Fragment_Recipient extends Fragment {
 
 
     private RecyclerView recyclerView;
-    private List<OwnerATMModel> ownerATMModelList;
-    private ArrayList<OwnerATMModel> resultsData = new ArrayList<>();
+    private List<RecipientModel> recipientModelList;
+    private ArrayList<RecipientModel> resultsData = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view;
-        view = inflater.inflate(R.layout.fragment__owner__a_t_m, container, false);
+        view = inflater.inflate(R.layout.fragment__recipient, container, false);
 
-        recyclerView = view.findViewById(R.id.recycleView_owner_ATM);
+        recyclerView = view.findViewById(R.id.recycleView_Recipient);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        ownerATMModelList = new ArrayList<>();
+        recipientModelList = new ArrayList<>();
         DividerItemDecoration itemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecoration);
-        showListOwnerATM();
+        showListAllRecipient();
 
         return view;
     }
 
-    private void showListOwnerATM(){
+    private void  showListAllRecipient(){
         Retrofit retrofit = new Retrofit.Builder().baseUrl(API_Interface.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         API_Interface api_interface = retrofit.create(API_Interface.class);
 
-        api_interface.getAllATM(LoginActivity.token).enqueue(new Callback<List<OwnerATMModel>>() {
+        api_interface.getAllRecipient(LoginActivity.token).enqueue(new Callback<List<RecipientModel>>() {
             @Override
-            public void onResponse(Call<List<OwnerATMModel>> call, Response<List<OwnerATMModel>> response) {
-                ownerATMModelList = response.body();
-                ATM_Adapter atm_adapter = new ATM_Adapter(ownerATMModelList);
-                recyclerView.setAdapter(atm_adapter);
+            public void onResponse(Call<List<RecipientModel>> call, Response<List<RecipientModel>> response) {
+                recipientModelList = response.body();
+                Recipient_Adapter recipient_adapter = new Recipient_Adapter(recipientModelList);
+                recyclerView.setAdapter(recipient_adapter);
             }
 
             @Override
-            public void onFailure(Call<List<OwnerATMModel>> call, Throwable t) {
+            public void onFailure(Call<List<RecipientModel>> call, Throwable t) {
 
             }
         });

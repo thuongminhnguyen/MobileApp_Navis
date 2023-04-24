@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mbbapp.API_Login.LoginActivity;
-import com.example.mbbapp.Model.DriverModel;
+import com.example.mbbapp.Main.Model.DriverModel;
 import com.example.mbbapp.R;
 
 import java.util.ArrayList;
