@@ -11,7 +11,7 @@ import android.widget.Button;
 import com.example.mbbapp.API_GetAllAtmTechnicianByUser.GetATMTechByUserActivity;
 import com.example.mbbapp.API_GetAllDevice.GetDeviceActivity;
 
-import com.example.mbbapp.Main.TestActivity;
+import com.example.mbbapp.Main.ScheduleActivity;
 
 public class GetActivity extends AppCompatActivity {
     private Button buttonGetATM;
@@ -46,7 +46,7 @@ public class GetActivity extends AppCompatActivity {
         buttongetUserUnit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unitIntent = new Intent(GetActivity.this, TestActivity.class);
+                Intent unitIntent = new Intent(GetActivity.this, ScheduleActivity.class);
                 if(unitIntent != null)
                 {
                     startActivity(unitIntent);

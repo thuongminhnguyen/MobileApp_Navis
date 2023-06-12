@@ -48,7 +48,7 @@
                             android:padding="12px"
                             android:drawableLeft="@drawable/ic_baseline_person_24"
                             android:drawableRight="@drawable/baseline_keyboard_arrow_down_24"
-                            android:id="@+id/name_recipient"
+                            android:id="@+id/name_techATM"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="left"
@@ -57,7 +57,7 @@
                         <TextView
                             android:textColor="@color/black"
                             android:drawableLeft="@drawable/baseline_phone_24"
-                            android:id="@+id/numberPhone_recipient"
+                            android:id="@+id/numberPhone_techATM"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding = "12px"
@@ -75,7 +75,7 @@
                 android:layout_height="1px"
                 android:background="@color/line"/>
             <FrameLayout
-                android:id="@+id/item_infor_recipient"
+                android:id="@+id/item_infor_techATM"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -97,11 +97,11 @@
                             android:textColor="@color/black"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Mã nhân viên:" />
+                            android:text="Mã kĩ thuật viên ATM: " />
 
                         <TextView
                             android:padding="6px"
-                            android:id="@+id/code_recipient"
+                            android:id="@+id/code_techATM"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="TextView" />
@@ -151,7 +151,7 @@
                         <TextView
                             android:padding="6px"
 
-                            android:id="@+id/email_recipient"
+                            android:id="@+id/email_techATM"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="TextView" />
@@ -173,11 +173,11 @@
                             android:textColor="@color/black"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Vị trí:" />
+                            android:text="Số thẻ:" />
 
                         <TextView
                             android:padding="6px"
-                            android:id="@+id/position_recipient"
+                            android:id="@+id/card_number_tech_ATM"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="TextView" />
@@ -202,7 +202,7 @@
 
                         <TextView
                             android:padding="6px"
-                            android:id="@+id/status_recipient"
+                            android:id="@+id/status_techATM"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="TextView" />
@@ -223,22 +223,22 @@
 
                 <TextView
                     android:padding="6px"
-                    android:id="@+id/update_RecipInfor"
+                    android:id="@+id/update_techInfor"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_span="1"
-                    android:text="Cập nhật thông tin cán bộ"
+                    android:text="Cập nhật thông tin kĩ thuật viên"
                     android:textColor="@color/blue"
                     android:textSize="14sp"
                     android:textStyle="italic"></TextView>
                 <TextView
                     android:padding="6px"
                     android:gravity="center"
-                    android:id="@+id/addNewRecip"
+                    android:id="@+id/addNewtechATM"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_span="1"
-                    android:text="Thêm cán bộ "
+                    android:text="Thêm kĩ thuật viên "
                     android:textColor="@color/green"
                     android:textSize="14sp"
                     android:textStyle="italic"></TextView>
@@ -251,8 +251,8 @@
                     android:layout_gravity="right"
                     android:layout_span="1"
                     android:gravity="right"
-                    android:textColor="@color/lavender"
-                    android:text="Cập nhật trạng thái"
+                    android:textColor="@color/red"
+                    android:text="Xóa thẻ RFID"
                     android:textSize="14sp"
                     android:textStyle="italic">
 

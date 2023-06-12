@@ -17,26 +17,54 @@ import java.util.ArrayList;
 
 public class main_Screen_Adapter extends ArrayAdapter<Model_mainScreen> {
 
-    public main_Screen_Adapter(@NonNull Context context, ArrayList<Model_mainScreen> mainScreensModelArrayList){
+    private OnItemClickListener listener;
+
+    public main_Screen_Adapter(@NonNull Context context, ArrayList<Model_mainScreen> mainScreensModelArrayList) {
         super(context, 0, mainScreensModelArrayList);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        View listItemView = convertView;
+        ViewHolder viewHolder;
 
-        View listitemView = convertView;
-        if (listitemView == null) {
-            // Layout Inflater inflates each item to be displayed in GridView.
-            listitemView = LayoutInflater.from(getContext()).inflate(R.layout.item_main_screen, parent, false);
+        if (listItemView == null) {
+            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.item_main_screen, parent, false);
+            viewHolder = new ViewHolder();
+            viewHolder.courseTV = listItemView.findViewById(R.id.idTVCourse);
+            viewHolder.courseIV = listItemView.findViewById(R.id.idIVcourse);
+            listItemView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) listItemView.getTag();
         }
 
         Model_mainScreen model_mainScreen = getItem(position);
-        TextView courseTV = listitemView.findViewById(R.id.idTVCourse);
-        ImageView courseIV = listitemView.findViewById(R.id.idIVcourse);
+        viewHolder.courseTV.setText(model_mainScreen.getItem_name());
+        viewHolder.courseIV.setImageResource(model_mainScreen.getImgid());
 
-        courseTV.setText(model_mainScreen.getItem_name());
-        courseIV.setImageResource(model_mainScreen.getImgid());
-        return listitemView;
+        listItemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onItemClick(model_mainScreen);
+                }
+            }
+        });
+
+        return listItemView;
+    }
+
+    private static class ViewHolder {
+        TextView courseTV;
+        ImageView courseIV;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(Model_mainScreen item);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 }

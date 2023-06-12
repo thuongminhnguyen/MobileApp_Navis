@@ -22,23 +22,23 @@ import java.net.URL;
 import java.util.List;
 
 
-public class ATM_Adapter extends RecyclerView.Adapter<ATM_Adapter.ViewHolder>{
+public class ATM_Owner_Adapter extends RecyclerView.Adapter<ATM_Owner_Adapter.ViewHolder>{
 
     private static List<OwnerATMModel>  ownerATMModelList;
 
-    public ATM_Adapter(List<OwnerATMModel> ownerATMModelList) {
+    public ATM_Owner_Adapter(List<OwnerATMModel> ownerATMModelList) {
         this.ownerATMModelList = ownerATMModelList;
     }
 
     @NonNull
     @Override
-    public ATM_Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ATM_Owner_Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_owner_atm,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ATM_Adapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ATM_Owner_Adapter.ViewHolder holder, int position) {
         if(ownerATMModelList != null && getItemCount() > 0){
             OwnerATMModel ownerATMModel = ownerATMModelList.get(position);
             holder.name_ownerATM.setText(ownerATMModel.getName());

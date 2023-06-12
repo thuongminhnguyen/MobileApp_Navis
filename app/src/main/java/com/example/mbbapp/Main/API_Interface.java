@@ -4,6 +4,8 @@ import com.example.mbbapp.Main.Model.EscortModel;
 import com.example.mbbapp.Main.Model.OwnerATMModel;
 import com.example.mbbapp.Main.Model.RecipientModel;
 import com.example.mbbapp.Main.Model.ScheduleModel;
+import com.example.mbbapp.Main.Model.TechATMModel;
+import com.example.mbbapp.Main.Model.VehicleModel;
 
 import java.util.List;
 
@@ -39,4 +41,10 @@ public interface API_Interface {
 
     @GET("/Recipient/GetAllRecipientByUser")
     Call<List<RecipientModel>> getAllRecipient(@Header("Cookie")  String authToken);
+
+    @GET("/AtmTechnician/GetAllAtmTechnicianByUser")
+    Call<List<TechATMModel>> getTechATM(@Header("Cookie")  String authToken);
+
+    @GET("/Vehicle/GetAllVehicleByUser")
+    Call<List<VehicleModel>> getVehicle(@Header("Cookie")  String authToken);
 }

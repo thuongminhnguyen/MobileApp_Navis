@@ -59,7 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 app:menu="@menu/bottom_nav_menu"
-                android:background="@color/lavender"
+                android:background="@color/white"
 
                 android:layout_alignParentBottom= "true"
                 />

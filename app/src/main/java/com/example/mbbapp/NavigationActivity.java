@@ -13,10 +13,9 @@ import android.view.View;
 import com.example.mbbapp.Main.Fragment_Driver;
 import com.example.mbbapp.Main.Fragment_Escort;
 import com.example.mbbapp.Main.Fragment_Main;
-import com.example.mbbapp.Main.Fragment_Notification;
 import com.example.mbbapp.Main.Fragment_Owner_ATM;
 import com.example.mbbapp.Main.Fragment_Recipient;
-import com.example.mbbapp.Main.TestActivity;
+import com.example.mbbapp.Main.ScheduleActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
@@ -82,7 +81,7 @@ public class NavigationActivity extends AppCompatActivity  implements Navigation
         int id = item.getItemId();
 
         if (id == R.id.menuAssignmentList) {
-            startActivity(new Intent(NavigationActivity.this, TestActivity.class));
+            startActivity(new Intent(NavigationActivity.this, ScheduleActivity.class));
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawLayout);
         drawer.closeDrawer(GravityCompat.START);

@@ -39,7 +39,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-public class TestActivity extends AppCompatActivity {
+public class ScheduleActivity extends AppCompatActivity {
 
     private Spinner spinner;
     private EditText edtDateStart;
@@ -151,7 +151,7 @@ public class TestActivity extends AppCompatActivity {
                                     }
                                 }
 
-                            ArrayAdapter<String> spinUnitNameAdapter = new ArrayAdapter<String>( TestActivity.this, android.R.layout.simple_spinner_item, getUnitNameName );
+                            ArrayAdapter<String> spinUnitNameAdapter = new ArrayAdapter<String>( ScheduleActivity.this, android.R.layout.simple_spinner_item, getUnitNameName );
 
                             spinUnitNameAdapter.setDropDownViewResource(R.layout.dropdown_item);
                            spinner.setAdapter(spinUnitNameAdapter);
@@ -178,7 +178,7 @@ public class TestActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(TestActivity.this, "Failure UnitName", Toast.LENGTH_LONG).show();
+                Toast.makeText(ScheduleActivity.this, "Failure UnitName", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -195,7 +195,7 @@ public class TestActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<List<ScheduleModel>> call, Throwable t) {
-                Toast.makeText(TestActivity.this, "Failure", Toast.LENGTH_LONG).show();
+                Toast.makeText(ScheduleActivity.this, "Failure", Toast.LENGTH_LONG).show();
             }
         });
     }
