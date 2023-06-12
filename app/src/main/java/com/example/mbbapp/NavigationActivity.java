@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +17,9 @@ import com.example.mbbapp.Main.Fragment_Escort;
 import com.example.mbbapp.Main.Fragment_Main;
 import com.example.mbbapp.Main.Fragment_Owner_ATM;
 import com.example.mbbapp.Main.Fragment_Recipient;
+import com.example.mbbapp.Main.Fragment_Tech_ATM;
 import com.example.mbbapp.Main.ScheduleActivity;
+import com.example.mbbapp.Main.VehicelFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
@@ -47,11 +51,6 @@ public class NavigationActivity extends AppCompatActivity  implements Navigation
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         getSupportFragmentManager().beginTransaction().replace(R.id.container, fragmentMain).commit();
-
-//        BadgeDrawable badgeDrawable = bottomNavigationView.getOrCreateBadge(R.id.thongBao);
-//        badgeDrawable.setVisible(true);
-       // badgeDrawable.setNumber(8);
-
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
@@ -71,7 +70,6 @@ public class NavigationActivity extends AppCompatActivity  implements Navigation
             }
         });
 
-
     }
 
 
@@ -82,6 +80,85 @@ public class NavigationActivity extends AppCompatActivity  implements Navigation
 
         if (id == R.id.menuAssignmentList) {
             startActivity(new Intent(NavigationActivity.this, ScheduleActivity.class));
+        }
+        if (id == R.id.menuVehicleList) {
+            // Tạo instance của VehicleFragment
+            VehicelFragment fragment = new VehicelFragment();
+
+            // Thêm Fragment vào NavigationActivity
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.container, fragment); // R.id.container là ID của container trong layout của NavigationActivity
+            fragmentTransaction.addToBackStack(null); // (Optional) Add Fragment to back stack
+            fragmentTransaction.commit();
+        }
+        if (id == R.id.menuDriver) {
+            // Tạo instance của VehicleFragment
+            Fragment_Driver fragment = new Fragment_Driver();
+
+            // Thêm Fragment vào NavigationActivity
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.container, fragment); // R.id.container là ID của container trong layout của NavigationActivity
+            fragmentTransaction.addToBackStack(null); // (Optional) Add Fragment to back stack
+            fragmentTransaction.commit();
+        }
+        if (id == R.id.menuOwner) {
+            // Tạo instance của VehicleFragment
+            Fragment_Owner_ATM fragment = new Fragment_Owner_ATM();
+
+            // Thêm Fragment vào NavigationActivity
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.container, fragment); // R.id.container là ID của container trong layout của NavigationActivity
+            fragmentTransaction.addToBackStack(null); // (Optional) Add Fragment to back stack
+            fragmentTransaction.commit();
+        }
+        if (id == R.id.menuHome) {
+            // Tạo instance của VehicleFragment
+            Fragment_Main fragment = new Fragment_Main();
+
+            // Thêm Fragment vào NavigationActivity
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.container, fragment); // R.id.container là ID của container trong layout của NavigationActivity
+            fragmentTransaction.addToBackStack(null); // (Optional) Add Fragment to back stack
+            fragmentTransaction.commit();
+        }
+        if (id == R.id.menuEscort) {
+            // Tạo instance của VehicleFragment
+            Fragment_Escort fragment = new Fragment_Escort();
+
+            // Thêm Fragment vào NavigationActivity
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.container, fragment); // R.id.container là ID của container trong layout của NavigationActivity
+            fragmentTransaction.addToBackStack(null); // (Optional) Add Fragment to back stack
+            fragmentTransaction.commit();
+        }
+
+        if (id == R.id.menurecept) {
+            // Tạo instance của VehicleFragment
+            Fragment_Recipient fragment = new Fragment_Recipient();
+
+            // Thêm Fragment vào NavigationActivity
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.container, fragment); // R.id.container là ID của container trong layout của NavigationActivity
+            fragmentTransaction.addToBackStack(null); // (Optional) Add Fragment to back stack
+            fragmentTransaction.commit();
+        }
+
+        if (id == R.id.menuATMTechnich) {
+            // Tạo instance của VehicleFragment
+            Fragment_Tech_ATM fragment = new Fragment_Tech_ATM();
+
+            // Thêm Fragment vào NavigationActivity
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.container, fragment); // R.id.container là ID của container trong layout của NavigationActivity
+            fragmentTransaction.addToBackStack(null); // (Optional) Add Fragment to back stack
+            fragmentTransaction.commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawLayout);
         drawer.closeDrawer(GravityCompat.START);

@@ -22,7 +22,7 @@
             android:icon="@drawable/ic_baseline_groups_2_24"
             android:title="Danh sách phân công"/>
         <item
-            android:id="@+id/menuDriverList"
+            android:id="@+id/menuVehicleList"
             android:icon="@drawable/ic_baseline_directions_car_filled_24"
             android:title="Danh sách xe"/>
         <item
@@ -33,6 +33,19 @@
             android:id="@+id/menuOwner"
             android:icon="@drawable/ic_baseline_account_circle_24"
             android:title="Chủ hàng/Thủ quỹ ATM"/>
+        <item
+            android:id="@+id/menuATMTechnich"
+            android:icon="@drawable/ic_baseline_account_circle_24"
+            android:title="Kĩ thuật viên ATM"/>
+        <item
+            android:id="@+id/menuEscort"
+            android:icon="@drawable/ic_baseline_account_circle_24"
+            android:title="Nhân viên hộ tống"/>
+        <item
+            android:id="@+id/menurecept"
+            android:icon="@drawable/ic_baseline_account_circle_24"
+            android:title="Nhân viên nhận cảnh bảo"/>
+
         <item
             android:id="@+id/menuStatisti"
             android:icon="@drawable/ic_baseline_account_circle_24"

@@ -1,6 +1,7 @@
 package com.example.mbbapp.Main;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,8 +39,8 @@ public class Fragment_Main extends Fragment implements main_Screen_Adapter.OnIte
         // Xử lý sự kiện tương ứng với từng item được bấm
         switch (item.getItem_name()) {
             case "Trực tuyến":
-                // Xử lý cho item "Trực tuyến"
-                Toast.makeText(getContext(), "Đã bấm vào Trực tuyến", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), ScheduleActivity.class);
+                startActivity(intent);
                 break;
             case "Phân công tuyến":
                 // Xử lý cho item "Phân công tuyến"

@@ -30,6 +30,7 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -50,7 +51,7 @@ public class ScheduleActivity extends AppCompatActivity {
     private List<ScheduleModel> listScheduleByUnitModelList;
 
     private  String startDate, finishDate;
-    private  int unitID;
+    private  int unitID, unitID_start;
     private ArrayList<String> getUnitNameName = new ArrayList<String>();
     private ArrayList<ScheduleModel> resultsData = new ArrayList<>();
 
@@ -70,7 +71,13 @@ public class ScheduleActivity extends AppCompatActivity {
         DividerItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecoration);
 
+        String curentDay = getCurrentDate();
         getUnitName();
+        edtDateStart.setText(getCurrentDate());
+        edtDateFinish.setText(getCurrentDate());
+        displaySchedule(curentDay, curentDay, unitID_start);
+
+
         edtDateStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,13 +96,21 @@ public class ScheduleActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displaySchedule();
+                displaySchedule(startDate, finishDate, unitID);
             }
         });
 
     }
 
-    private void callAPIGetSchedule() {
+    private String getCurrentDate() {
+        Calendar calendar = Calendar.getInstance();
+        Date currentDate = calendar.getTime();
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = dateFormat.format(currentDate);
+        return formattedDate;
+        // Sử dụng formattedDate theo nhu cầu của bạn
+//        Log.d("CurrentDate", formattedDate);
     }
 
     private void showDate(int check) {
@@ -150,7 +165,7 @@ public class ScheduleActivity extends AppCompatActivity {
                                         getUnitNameName.add(model.getName().toString());
                                     }
                                 }
-
+                            unitID_start = getUnitNameData.get(0).getId();
                             ArrayAdapter<String> spinUnitNameAdapter = new ArrayAdapter<String>( ScheduleActivity.this, android.R.layout.simple_spinner_item, getUnitNameName );
 
                             spinUnitNameAdapter.setDropDownViewResource(R.layout.dropdown_item);
@@ -182,7 +197,7 @@ public class ScheduleActivity extends AppCompatActivity {
             }
         });
     }
-    private void displaySchedule(){
+    private void displaySchedule(String startDate,String finishDate , int unitID){
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl(API_Interface.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         API_Interface api_interface = retrofit.create(API_Interface.class);
